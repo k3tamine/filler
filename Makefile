@@ -6,7 +6,7 @@
 #    By: mgonon <mgonon@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/08/23 21:22:48 by mgonon            #+#    #+#              #
-#    Updated: 2017/09/01 06:18:01 by mgonon           ###   ########.fr        #
+#    Updated: 2017/09/02 05:27:21 by mgonon           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,8 @@ O_DIR	= objs
 
 INCS	= filler.h
 FILES	= main.c \
-		  parse_vm_info.c 
+		  parse_vm_info.c \
+		  play_move.c
 SRCS 	= $(addprefix $(S_DIR)/, $(FILES))
 OBJS 	= $(SRCS:%.c=%.o)
 
@@ -39,7 +40,8 @@ $(NAME): $(OBJS) libft
 	@gcc $(FLAGS) -o $(NAME) $(OBJS) -Llibft -lft
 	@echo "\033[33;32mCreating $(NAME)"
 	@mv mgonon.filler resources/players/
-
+	
+	@rm -f $(OBJS)
 clean:
 	@make -C libft/ clean
 	@rm -f $(OBJS)

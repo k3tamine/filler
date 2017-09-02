@@ -6,13 +6,25 @@
 /*   By: mgonon <mgonon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/01 06:08:05 by mgonon            #+#    #+#             */
-/*   Updated: 2017/09/01 11:01:48 by mgonon           ###   ########.fr       */
+/*   Updated: 2017/09/02 06:08:24 by mgonon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/filler.h"
 
 int	g_x = 0;
+
+static void	get_str_piece(char *line, t_piece *piece)
+{
+
+	piece->str = (char *)malloc(sizeof(char) * piece->f_height * piece->f_width + piece->f_height + 1);
+	ft_strcpy(piece->str, line);
+	piece->str += ft_strlen(line);
+	*(piece->str) = '\n';
+	(piece->str)++;
+
+	fprintf(stderr, "piece->str = %s\n", piece->str);
+}
 
 static void	get_piece(char *line, t_piece *piece)
 {
@@ -60,6 +72,7 @@ static void	get_map(char *line, char **map, int board_width)
 		++y;
 		line++;
 	}
+	map[g_x][y] = '\0';
 	++g_x;
 }
 
@@ -95,42 +108,42 @@ static char	**malloc_map(t_board board)
 	i = -1;
 	map = (char **)malloc(sizeof(char *) * board.height);
 	while (++i < board.height)
-		map[i] = (char *)malloc(sizeof(char) * board.width);
+		map[i] = (char *)malloc(sizeof(char) * board.width + 1);
 	return (map);
 }
 
-int			parse_vm_info(void)
+int			parse_vm_info(t_board *board)
 {
 	char	*line;
 	int		fd;
-	t_board	board;
 
-	ft_bzero(&board, sizeof(board));
 	if (!(fd = open("toto", O_RDWR)))
 		return (42);
 	line = ft_strnew(10000);
 	while (get_next_line(0, &line))
 	{
-		if (!board.p_nb)
-			board.p_nb = get_p_nb(line);
-		else if (!board.height || !board.width)
+		if (!board->p_nb)
+			board->p_nb = get_p_nb(line);
+		else if (!board->height || !board->width)
 		{
-			get_board_size(line, &board.height, &board.width);
-			board.map = malloc_map(board);
+			get_board_size(line, &(board->height), &(board->width));
+			board->map = malloc_map(*board);
 		}
 		else if (ft_strstr(line, "Piece"))
 		{
-			get_piece(line, &board.piece);
+			get_piece(line, &(board->piece));
 			break ;
 		}
-		else if (ft_atoi(line) >= 0 && ft_atoi(line) < board.height)
-			get_map(line, board.map, board.width);
+		else if (ft_atoi(line) >= 0 && ft_atoi(line) < board->height)
+			get_map(line, board->map, board->width);
 	}
 	free(line);
-	fprintf(stderr, "p_nb = %d\n", board.p_nb);
-	fprintf(stderr, "board.width = %d\n", board.width);
-	fprintf(stderr, "board.height = %d\n", board.height);
-	fprintf(stderr, "p.p_width = %d\n", board.piece.p_width);
-	fprintf(stderr, "p.p_height = %d\n", board.piece.p_height);
+	fprintf(stderr, "\n======== INFOS ========\n");
+	fprintf(stderr, "p_nb = %d\n", board->p_nb);
+	fprintf(stderr, "board->width = %d\n", board->width);
+	fprintf(stderr, "board->height = %d\n", board->height);
+	fprintf(stderr, "p.p_width = %d\n", board->piece.p_width);
+	fprintf(stderr, "p.p_height = %d\n", board->piece.p_height);
+	fprintf(stderr, "========= END =========\n\n");
 	return (0);
 }
