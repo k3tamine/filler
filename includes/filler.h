@@ -5,35 +5,45 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mgonon <mgonon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/08/24 17:20:09 by mgonon            #+#    #+#             */
-/*   Updated: 2017/09/02 06:03:52 by mgonon           ###   ########.fr       */
+/*   Created: 2017/10/14 16:51:14 by mgonon            #+#    #+#             */
+/*   Updated: 2017/10/24 17:30:49 by mgonon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FILLER_H
 # define FILLER_H
-
+# define TOP	42
+# define BOT	43
+# define MID	44
+# define LEFT	45
+# define RIGHT	46
 # include "../libft/libft.h"
 
-typedef struct	s_piece
+typedef struct	s_blcf
 {
-	char	**str;
-	int		p_width;
-	int		p_height;
-	int		f_width;
-	int		f_height;
-}				t_piece;
-
-typedef struct	s_board
-{
+	int		map_h;
+	int		map_w;
+	int		forme_h;
+	int		forme_w;
+	int		top;
+	int		first;
+	char	p_char;
+	char	opp_char;
 	char	**map;
-	int		p_nb;
-	int		width;
-	int		height;
-	t_piece	piece;
-}				t_board;				
+	char	**piece;
+}				t_blcf;
 
-int			parse_vm_info(t_board *board);
-void		play_move(t_board *board);
+int				is_placeable(t_blcf blcf, int x, int y);
+int				am_i_top(t_blcf blcf);
+int				am_i_bot(t_blcf blcf);
+void			play(t_blcf *blcf);
+int				parse_vm_info(t_blcf *blcf);
+void			get_player_info(char *line, t_blcf *blcf);
+void			get_board_size(char *line, int *height, int *width);
+void			get_map(char *line, t_blcf *blcf);
+int				where_i_go(t_blcf blcf);
+void			do_moves(t_blcf *blcf, int dir);
+void			print_map(char **map);
+char			**malloc_map(int height, int width);
 
 #endif
