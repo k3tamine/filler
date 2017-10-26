@@ -6,7 +6,7 @@
 /*   By: mgonon <mgonon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/14 16:51:14 by mgonon            #+#    #+#             */
-/*   Updated: 2017/10/24 17:30:49 by mgonon           ###   ########.fr       */
+/*   Updated: 2017/10/25 17:17:05 by mgonon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,11 +39,12 @@ int				am_i_bot(t_blcf blcf);
 void			play(t_blcf *blcf);
 int				parse_vm_info(t_blcf *blcf);
 void			get_player_info(char *line, t_blcf *blcf);
-void			get_board_size(char *line, int *height, int *width);
+void			get_size(char *line, int *height, int *width);
 void			get_map(char *line, t_blcf *blcf);
 int				where_i_go(t_blcf blcf);
 void			do_moves(t_blcf *blcf, int dir);
 void			print_map(char **map);
 char			**malloc_map(int height, int width);
+void			free_tab(char **tab);
 
 #endif

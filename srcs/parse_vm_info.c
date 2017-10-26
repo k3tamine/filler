@@ -6,7 +6,7 @@
 /*   By: mgonon <mgonon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/24 17:33:01 by mgonon            #+#    #+#             */
-/*   Updated: 2017/10/24 17:33:08 by mgonon           ###   ########.fr       */
+/*   Updated: 2017/10/25 17:48:13 by mgonon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,14 +43,18 @@ void	get_map(char *line, t_blcf *blcf)
 	blcf->map[y] = 0;
 }
 
-void	get_board_size(char *line, int *height, int *width)
+void	get_size(char *line, int *height, int *width)
 {
-	while (*line != ' ')
+	while (*line != ' ' && *line)
 		++line;
+	if (!*line)
+		exit(1);
 	++line;
 	*height = ft_atoi(line);
-	while (*line != ' ')
+	while (*line != ' ' && *line)
 		++line;
+	if (!*line)
+		exit(1);
 	++line;
 	*width = ft_atoi(line);
 }
