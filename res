@@ -84,14 +84,14 @@ abanlin
 
 === map00 ===
 mgonon.filler
-16
+97
 carli
-84
+3
 === map01 ===
 mgonon.filler
-18
-carli
-22
+35
+carli.filler
+5
 
 
 === map00 ===
@@ -132,9 +132,9 @@ hcao
 
 === map00 ===
 mgonon.filler
-21
+94
 superjeannot
-79
+6
 === map01 ===
 mgonon.filler
 29

@@ -6,7 +6,7 @@
 /*   By: mgonon <mgonon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/14 16:50:54 by mgonon            #+#    #+#             */
-/*   Updated: 2017/10/25 17:23:05 by mgonon           ###   ########.fr       */
+/*   Updated: 2017/10/26 13:18:11 by mgonon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,11 @@ int			is_placeable(t_blcf blcf, int y, int x)
 		xt = 0;
 		while (xt + x < blcf.map_w && xt < blcf.forme_w)
 		{
-			if (blcf.map[y + yt][x + xt] != '.' && blcf.piece[yt][xt] == '*')
+			if (blcf.map[y + yt][x + xt] == blcf.p_char
+				&& blcf.piece[yt][xt] == '*')
 				count++;
-			if (blcf.map[y + yt][x + xt] != blcf.p_char &&
-				blcf.piece[yt][xt] == '*' && blcf.map[y + yt][x + xt] != '.')
+			else if (blcf.map[y + yt][x + xt] == blcf.opp_char
+				&& blcf.piece[yt][xt] == '*')
 				return (0);
 			xt++;
 		}

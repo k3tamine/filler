@@ -6,7 +6,7 @@
 #    By: mgonon <mgonon@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/10/24 17:33:49 by mgonon            #+#    #+#              #
-#    Updated: 2017/10/24 17:34:30 by mgonon           ###   ########.fr        #
+#    Updated: 2017/10/26 12:53:02 by mgonon           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,10 +24,10 @@
 # mgonon vs superjeannot
 
 player1=mgonon.filler
-player2=abanlin.filler
+player2=superjeannot.filler
 
-n_turns=15
-map=01
+n_turns=40
+map=00
 
 p1=0;
 p2=0;
