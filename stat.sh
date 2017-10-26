@@ -6,28 +6,15 @@
 #    By: mgonon <mgonon@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/10/24 17:33:49 by mgonon            #+#    #+#              #
-#    Updated: 2017/10/26 12:53:02 by mgonon           ###   ########.fr        #
+#    Updated: 2017/10/26 13:20:47 by mgonon           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-# mgonon 79 vs 21 abanlin
-# abanlin 0 vs 100 mgonon
-# carli 29 vs 71 mgonon
-# mgonon 80 vs 20 carli
-# champely 9 vs 91 mgonon
-# mgonon 91 vs 9 champely
-# grati vs mgonon
-# mgonon vs grati
-# hcoa vs mgonon
-# mgonon vs hcao
-# superjeannot vs mgonon
-# mgonon vs superjeannot
-
 player1=mgonon.filler
-player2=superjeannot.filler
+player2=abanlin.filler
 
-n_turns=40
-map=00
+n_turns=5
+map=02
 
 p1=0;
 p2=0;
